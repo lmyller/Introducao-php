@@ -7,8 +7,8 @@ $categorias[] = 'adolescente';
 $categorias[] = 'adulto';
 $categorias[] = 'idoso';
  
-$nome = 'Eduardo';
-$idade = 13;
+$nome = $_POST['nome'];
+$idade = $_POST['idade'];
 
 /* Verificar tipo de dados */
 //var_dump($nome);
