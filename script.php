@@ -14,11 +14,17 @@ $idade = $_POST['idade'];
 //var_dump($nome);
 //var_dump($idade);
 
-if($idade >= 6 && $idade <= 12)
-    echo 'infantil';
+if($idade >= 6 && $idade <= 12){
+    for($indice = 0; $indice < count($categorias); $indice++)
+        if($categorias[$indice] === 'infantil')
+            echo 'infantil';
+}
 
-else if($idade >= 13 && $idade <= 17)
-    echo 'adolescente';
+else if($idade >= 13 && $idade <= 17){
+    for($indice = 0; $indice < count($categorias); $indice++)
+        if($categorias[$indice] === 'adolescente')
+            echo 'adolescente';
+}
 
 else
     echo 'adulto';
