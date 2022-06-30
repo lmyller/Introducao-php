@@ -9,6 +9,21 @@ $categorias[] = 'adulto';
 $nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
+if(empty($nome)){
+    echo 'Nome não pode ser vazio';
+    return;
+}
+
+if(strlen($nome) > 40){
+    echo 'O nome é muito extenso';
+    return;
+}
+
+if(!is_numeric($idade)){
+    echo 'Idade deve ser um número';
+    return;
+}
+
 /* Verificar tipo de dados */
 //var_dump($nome);
 //var_dump($idade);
