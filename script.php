@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 /* Declarando variáveis */
 $categorias = [];
 $categorias[] = 'infantil';
@@ -10,17 +12,20 @@ $nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
 if(empty($nome)){
-    echo 'Nome não pode ser vazio';
+    $_SESSION['mensagem-de-erro'] = 'Nome não pode ser vazio';
+    header('location: index.php');
     return;
 }
 
-if(strlen($nome) > 40){
-    echo 'O nome é muito extenso';
+else if(strlen($nome) > 40){
+    $_SESSION['mensagem-de-erro'] = 'O nome é muito extenso';
+    header('location: index.php');
     return;
 }
 
-if(!is_numeric($idade)){
-    echo 'Idade deve ser um número';
+else if(!is_numeric($idade)){
+    $_SESSION['mensagem-de-erro'] = 'Idade deve ser um número';
+    header('location: index.php');
     return;
 }
 
@@ -30,18 +35,27 @@ if(!is_numeric($idade)){
 
 if($idade >= 6 && $idade <= 12){
     for($indice = 0; $indice < count($categorias); $indice++)
-        if($categorias[$indice] === 'infantil')
-            echo 'infantil';
+        if($categorias[$indice] === 'infantil'){
+            $_SESSION['mensagem-de-sucesso'] = 'O atleta '.$nome.' compete na categoria '.$categorias[$indice];
+            header('location: index.php');
+            return;
+        }
 }
 
 else if($idade >= 13 && $idade <= 17){
     for($indice = 0; $indice < count($categorias); $indice++)
-        if($categorias[$indice] === 'adolescente')
-            echo 'adolescente';
+        if($categorias[$indice] === 'adolescente'){
+            $_SESSION['mensagem-de-sucesso'] = 'O atleta '.$nome.'compete na categoria '.$categorias[$indice];
+            header('location: index.php');
+            return;    
+        }
 }
 
-else
-    echo 'adulto';
+else{
+    $_SESSION['mensagem-de-sucesso'] = 'O atleta '.$nome.'compete na categoria '.$categorias[$indice];
+    header('location: index.php');
+    return;    
+}
 
 
     
