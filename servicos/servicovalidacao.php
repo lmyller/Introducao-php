@@ -1,13 +1,17 @@
 <?php
 
+const ERRO_NOME_VAZIO = 'Nome não pode ser vazio',
+      ERRO_NOME_EXTENSO = 'O nome é muito extenso',
+      ERRO_IDADE = 'Idade deve ser um número';
+
 function validarNome(string $nome) : bool {
     if(empty($nome)){
-        mensagemDeErro('Nome não pode ser vazio');
+        mensagemDeErro(ERRO_NOME_VAZIO);
         return false;
     }
 
     else if(strlen($nome) > 40){
-        mensagemDeErro('O nome é muito extenso');
+        mensagemDeErro(ERRO_NOME_EXTENSO);
         return false;
     }
 
@@ -16,7 +20,7 @@ function validarNome(string $nome) : bool {
 
 function validarIdade(string $idade) : bool {
     if(!is_numeric($idade)){
-        mensagemDeErro('Idade deve ser um número');
+        mensagemDeErro(ERRO_IDADE);
         return false;
     }
 
